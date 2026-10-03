@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Planning Poker</title>
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect x='14' y='6' width='36' height='52' rx='6' fill='%23fffdf7' stroke='%231e6e3e' stroke-width='4'/><text x='32' y='42' font-size='26' font-family='Arial' font-weight='900' text-anchor='middle' fill='%23d62839'>8</text></svg>"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <div id="app">
+      <svg id="table" aria-hidden="true">
+        <defs>
+          <filter id="felt" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
+            <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="3" seed="7" result="grain" />
+            <feColorMatrix in="grain" type="saturate" values="0" result="grainGrey" />
+            <feComposite in="SourceGraphic" in2="grainGrey" operator="arithmetic" k1="0" k2="1" k3="0.22" k4="-0.11" result="grained" />
+            <feTurbulence type="fractalNoise" baseFrequency="0.006 0.009" numOctaves="3" seed="11" result="mottle" />
+            <feColorMatrix in="mottle" type="saturate" values="0" result="mottleGrey" />
+            <feComposite in="grained" in2="mottleGrey" operator="arithmetic" k1="0" k2="1" k3="0.16" k4="-0.08" result="felted" />
+            <feComposite in="felted" in2="SourceAlpha" operator="in" />
+          </filter>
+          <radialGradient id="light" cx="50%" cy="42%" r="62%">
+            <stop offset="0" stop-color="#fff" stop-opacity="0.13" />
+            <stop offset="0.55" stop-color="#000" stop-opacity="0" />
+            <stop offset="1" stop-color="#000" stop-opacity="0.42" />
+          </radialGradient>
+          <linearGradient id="rail" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#5a3a24" />
+            <stop offset="0.5" stop-color="#3b2416" />
+            <stop offset="1" stop-color="#24150c" />
+          </linearGradient>
+        </defs>
+        <ellipse id="t-shadow" fill="#000" opacity="0.45" />
+        <ellipse id="t-rail" fill="url(#rail)" />
+        <ellipse id="t-rail-shine" fill="none" stroke="#fff" stroke-opacity="0.08" />
+        <ellipse id="t-felt" fill="#1d6b3c" filter="url(#felt)" />
+        <ellipse id="t-light" fill="url(#light)" />
+        <ellipse id="t-line" fill="none" stroke="#fff" stroke-opacity="0.13" stroke-width="2" />
+      </svg>
+      <div id="seats"></div>
+      <button id="coin" type="button">
+        <span class="coin-toss">
+          <span class="coin-inner">
+            <span class="coin-face heads">
+              <svg viewBox="0 0 48 48" aria-hidden="true">
+                <path d="M4 24 C12 11 36 11 44 24 C36 37 12 37 4 24 Z" fill="#fffdf7" stroke="#5c3d06" stroke-width="3" stroke-linejoin="round" />
+                <circle cx="24" cy="24" r="8" fill="#2d6cdf" stroke="#5c3d06" stroke-width="2.5" />
+                <circle cx="24" cy="24" r="3.6" fill="#1a1a1a" />
+                <circle cx="21.5" cy="21.5" r="1.6" fill="#fff" />
+              </svg>
+            </span>
+            <span class="coin-face tails">
+              <svg viewBox="0 0 48 48" aria-hidden="true">
+                <path d="M5 22 C13 33 35 33 43 22" fill="none" stroke="#3b2208" stroke-width="3.5" stroke-linecap="round" />
+                <path d="M12 28 L9 34 M19 31 L18 37 M29 31 L30 37 M36 28 L39 34" stroke="#3b2208" stroke-width="3" stroke-linecap="round" />
+              </svg>
+            </span>
+          </span>
+        </span>
+      </button>
+      <button id="clear" type="button" title="Clear cards" aria-label="Clear cards">
+        <span class="chip"><span class="chip-icon">🧹</span></span>
+      </button>
+      <div id="cards"></div>
+      <form id="join" class="hidden" autocomplete="off">
+        <span class="preview avatar"></span>
+        <input id="name" maxlength="32" placeholder="AB" aria-label="Your initials or an emoji" spellcheck="false" />
+        <span class="picks"></span>
+        <button class="sit" type="submit" aria-label="Sit down">➜</button>
+      </form>
+      <button id="link" type="button" title="Copy room link" aria-label="Copy room link">
+        <span class="link-icon">🔗</span><span class="link-code"></span>
+      </button>
+      <div id="status" title="Reconnecting">📡</div>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

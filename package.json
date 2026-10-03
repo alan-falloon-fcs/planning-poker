@@ -1,0 +1,22 @@
+{
+  "name": "planning-poker",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch server/index.ts --dev",
+    "build": "vite build",
+    "start": "vite build && tsx server/index.ts",
+    "typecheck": "tsc --noEmit",
+    "test": "node --import tsx --test server/*.test.ts"
+  },
+  "dependencies": {
+    "tsx": "^4.23.15",
+    "vite": "^8.3.2",
+    "ws": "^8.22.0"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.4",
+    "@types/ws": "^8.18.2",
+    "typescript": "^7.0.2"
+  }
+}
