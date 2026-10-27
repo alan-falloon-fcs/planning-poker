@@ -1,4 +1,4 @@
-export const CARDS = ['1', '2', '3', '5', '8', '13', '?', '☕'] as const;
+export const CARDS = ['1', '2', '4', '8', '?', '☕'] as const;
 export type CardValue = (typeof CARDS)[number];
 
 export const MAX_NAME_GRAPHEMES = 3;

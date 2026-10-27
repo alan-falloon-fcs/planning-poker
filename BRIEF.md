@@ -62,7 +62,7 @@ Returns all played cards to their owners' hands. Table is emptied.
 
 ### Cards
 
-- Fibonacci 1 to 13.
+- Doubling 1, 2, 4, 8, plus ? and ☕.
 - Each card shows the owning player's initials/emoji in the top-left corner, and upside-down in the bottom-right corner — visible in both face-up and face-down states, so at a glance you can tell who has and hasn't played, even face-down.
 - Face-up: the number is large and centered.
 - Face-down: a simple repeating pattern, no number.

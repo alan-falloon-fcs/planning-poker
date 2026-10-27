@@ -49,10 +49,10 @@ test('playing a different card replaces the played one; clear empties the table'
   const room = new Room('ROOM', 0);
   const conn = fakeConn();
   const a = room.join(SECRET_A, 'AA', conn);
-  room.play(a, '3');
+  room.play(a, '2');
   const first = a.card!.n;
-  room.play(a, '5');
-  assert.equal(a.card?.v, '5');
+  room.play(a, '4');
+  assert.equal(a.card?.v, '4');
   assert.notEqual(a.card!.n, first);
   room.clear();
   assert.equal(conn.last!.players[0].card, null);
@@ -63,13 +63,13 @@ test('reconnecting with the same secret keeps the seat and card, and closes the 
   const old = fakeConn();
   const a = room.join(SECRET_A, 'AA', old);
   room.join(SECRET_B, 'BB', fakeConn());
-  room.play(a, '13');
+  room.play(a, '1');
 
   const fresh = fakeConn();
   const again = room.join(SECRET_A, 'AA', fresh);
   assert.equal(again, a);
   assert.equal(old.closed, CLOSE_REPLACED);
-  assert.equal(fresh.last!.players.find((p) => p.pid === a.pid)!.card?.v, '13');
+  assert.equal(fresh.last!.players.find((p) => p.pid === a.pid)!.card?.v, '1');
 });
 
 test('a disconnected player keeps their seat through the grace period, then is removed', () => {

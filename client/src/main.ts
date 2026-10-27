@@ -16,10 +16,8 @@ const SEAT_COLORS = ['#e85d75', '#f29e4c', '#e9c46a', '#8ac926', '#2ec4b6', '#3a
 const INK: Record<CardValue, string> = {
   '1': '#2a9d8f',
   '2': '#3f9e5a',
-  '3': '#277da1',
-  '5': '#7b5cd6',
-  '8': '#f3722c',
-  '13': '#d62839',
+  '4': '#7b5cd6',
+  '8': '#d62839',
   '?': '#5f6b7a',
   '☕': '#8d5a3b',
 };
