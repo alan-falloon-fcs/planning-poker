@@ -43,4 +43,4 @@ Dependabot opens weekly update PRs; minor and patch updates auto-merge once CI p
 
 ## License
 
-[MIT](LICENSE) © Farmlands Cooperative Society
+[MIT](LICENSE) © Farmlands Co-operative Society Limited
