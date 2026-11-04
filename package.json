@@ -1,7 +1,11 @@
 {
   "name": "planning-poker",
   "private": true,
+  "license": "MIT",
   "type": "module",
+  "engines": {
+    "node": ">=24"
+  },
   "scripts": {
     "dev": "tsx watch server/index.ts --dev",
     "build": "vite build",
