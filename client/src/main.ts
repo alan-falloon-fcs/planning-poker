@@ -531,6 +531,17 @@ linkEl.addEventListener('click', async () => {
   } catch {}
 });
 
+const fullscreenEl = $<HTMLButtonElement>('#fullscreen');
+if (document.fullscreenEnabled && matchMedia('(pointer: coarse)').matches) {
+  fullscreenEl.classList.remove('hidden');
+  fullscreenEl.addEventListener('click', async () => {
+    try {
+      if (document.fullscreenElement) await document.exitFullscreen();
+      else await document.documentElement.requestFullscreen();
+    } catch {}
+  });
+}
+
 let statusTimer = 0;
 function renderStatus() {
   clearTimeout(statusTimer);
